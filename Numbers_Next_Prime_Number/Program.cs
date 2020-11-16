@@ -29,17 +29,23 @@ namespace Numbers_Next_Prime_Number
                 }
                 // start looking for primes larger than largestPrimeSoFar
                 var lookingForNextPrime = true;
-                var currentNumberToCheck = largestPrimeSoFar;
+                int currentNumberToCheck = largestPrimeSoFar;
                 while (lookingForNextPrime)
                 {
                     currentNumberToCheck++;
+                    //Console.WriteLine(currentNumberToCheck);
                     // the magic happens...
                     var numberIsPrime = tester.CheckIfPrime(currentNumberToCheck);
 
                     if (numberIsPrime)
                     {
+                        //Console.WriteLine("breaking");
                         break;
                     }
+                    //if (currentNumberToCheck > 20)
+                    //{
+                    //    System.Environment.Exit(1);
+                    //}
                 }
                 var locatedPrime = currentNumberToCheck;
                 foundPrimes.Add(locatedPrime);
@@ -51,21 +57,25 @@ namespace Numbers_Next_Prime_Number
                 string feedback = Console.ReadLine();
                 if (feedback == "n" || feedback == "no" || feedback == "N" || feedback == "No")
                 {
+                    Console.WriteLine("user exits program");
                     userWantsToContinue = false;
                 } 
             }
+            Console.WriteLine("exiting");
         }
 
         public bool CheckIfPrime(int numberToCheck)
         {
-            var divisor = 1;
-            while (divisor < numberToCheck)
+            int divisor = 1;
+            while (divisor < numberToCheck - 1)
             {
+                divisor++;
                 double isWholeNumber = (double)numberToCheck / (double)divisor;
+                //Console.WriteLine("Dividing {0} by {1} to get {2}", (double)numberToCheck, (double)divisor, isWholeNumber);
                 bool divisibleNumberFound = isWholeNumber == Math.Floor(isWholeNumber);
-
                 if (divisibleNumberFound)
                 {
+                    //Console.WriteLine("detected: {0} is not a Prime beause it divides into a whole number with {1}", numberToCheck, divisor);
                     return false;
                 }
             }
