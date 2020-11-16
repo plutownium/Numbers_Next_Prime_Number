@@ -8,21 +8,44 @@ namespace Numbers_Next_Prime_Number
     {
         static void Main(string[] args)
         {
-            // finds prime numbers until the user stops asking for the next one.
+            // ### finds prime numbers until the user stops asking for the next one.
             List<int> foundPrimes = new List<int>();
-            foundPrimes.Add(1);
-            foundPrimes.Add(3);
-            foundPrimes.Add(7);
-            
-            foreach (int item in foundPrimes)
+            // *** *** *** ***
+            // a prime is a number that is only divisible by itself. 
+            // so all the numbers smaller than it mustyield floats.
+            // *** *** *** ***
+            var userWantsToContinue = true;
+            while (userWantsToContinue)
             {
-                Console.WriteLine(item);
-            }
+                var locatedPrime = 10;
+                foundPrimes.Add(locatedPrime);
+                // the magic happens...
+                Console.WriteLine(locatedPrime);
 
-            var p = new Program();
-            var k = p.Five(3);
-            Console.WriteLine(k);
-            Console.WriteLine(Charles("abc"));
+                // prime found, prompt user, "do u want next prime found?"
+                Console.WriteLine("Find the next prime?");
+                string feedback = Console.ReadLine();
+                if (feedback == "n" || feedback == "no" || feedback == "N" || feedback == "No")
+                {
+                    userWantsToContinue = false;
+                } else
+                {
+                    continue;
+                }
+            }
+            //foundPrimes.Add(1);
+            //foundPrimes.Add(3);
+            //foundPrimes.Add(7);
+
+            //foreach (int item in foundPrimes)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            //var p = new Program();
+            //var k = p.Five(3);
+            //Console.WriteLine(k);
+            //Console.WriteLine(Charles("abc"));
 
         }
         public int Five(int x)
